@@ -1,0 +1,35 @@
+.button {
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: box-shadow 0.3s;
+  min-width: 40px;
+  max-width: 300px;
+
+  &--primary {
+    background-color: gold;
+    color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  &--secondary {
+    background-color: lightgray;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  &:hover:not([disabled]) {
+    background-color: rgba($color: #000000, $alpha: 0.2);
+  }
+
+  &:active:not([disabled]) {
+    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.4);
+    background-color: rgba($color: #000000, $alpha: 0.1);
+  }
+}
