@@ -23,30 +23,38 @@
             <my-input type="password" placeholder="Password"></my-input>
             <my-input placeholder="Напишите что-то..." :value="124214124"></my-input>
         </div>
+        <div class="wrapper__item">
+            <my-radio-button label="Option" value="option1" v-model="selectedOption" />
+            <my-radio-button label="Option" value="option2" v-model="selectedOption" />
+        </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import MyButton from '../components/MyButton';
-import MyCheckbox from '../components/MyCheckbox'
+import MyCheckbox from '../components/MyCheckbox';
 import MyInput from '../components/MyInput';
+import MyRadioButton from "../components/MyRadioButton";
 
 const isChecked = ref(false);
 
+const selectedOption = ref(null);
+
+
 const handleButtonClick = () => {
     console.log('Button clicked');
-}
+};
 
 const handleCheckbox = (event) => {
     const newValue = event.target.checked;
     console.log(`Checkbox changed to ${newValue}`);
     isChecked.value = newValue;
-}
+};
 
 const handleInput = (value) => {
     console.log(value)
-}
+};
 </script>
 
 <style scoped lang="scss">

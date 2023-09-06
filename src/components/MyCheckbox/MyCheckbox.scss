@@ -20,11 +20,12 @@ $disabled-text-color: #888;
     align-items: center;
     width: 25px;
     height: 26px;
-    border: 2px solid $border-color;
     margin-right: 5px;
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
+    color: #fff;
+    background-color: var(--primary);
 
 
     input[type="checkbox"]:disabled + & {

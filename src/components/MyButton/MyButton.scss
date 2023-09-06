@@ -13,7 +13,7 @@
   font-weight: 500;
 
   &--primary {
-    background-color: gold;
+    background-color: var(--primary);
     color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }

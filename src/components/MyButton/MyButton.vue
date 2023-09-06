@@ -32,11 +32,11 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(['click']);
 
 const handleClick = () => {
   emit('click')
-}
+};
 </script>
   
 <style scoped lang="scss" src="./MyButton.scss"></style>

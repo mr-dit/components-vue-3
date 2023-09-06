@@ -43,7 +43,7 @@ const props = defineProps({
 
 const inputValue = ref(props.value);
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['input']);
 
 const handleInput = () => {
     emit('input', inputValue.value);

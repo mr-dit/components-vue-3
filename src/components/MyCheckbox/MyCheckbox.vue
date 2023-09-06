@@ -31,12 +31,11 @@ const props = defineProps({
 
 const isChecked = ref(props.value);
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['input']);
 
 function handleChange(event) {
     emit('input', event);
-}
+};
 </script>
 
-<style scoped lang="scss" src="./MyCheckbox.scss">
-</style>
+<style scoped lang="scss" src="./MyCheckbox.scss"></style>
