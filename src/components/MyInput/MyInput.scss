@@ -1,0 +1,34 @@
+.input {
+  &__label {
+    font-weight: bold;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  &__icon-left {
+    margin-right: 8px;
+    color: #d3d3d3;
+  }
+
+  &__field {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 4px;
+    font-size: 16px;
+    background: none;
+    appearance: none;
+    -webkit-appearance: none;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

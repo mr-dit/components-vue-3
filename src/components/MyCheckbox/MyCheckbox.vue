@@ -36,41 +36,6 @@ const emit = defineEmits(['input'])
 function handleChange(event) {
     emit('input', event);
 }
-
-// export default {
-//   name: "my-checkbox",
-//   props: {
-//     label: {
-//       type: String,
-//       required: true
-//     },
-//     value: {
-//       type: Boolean,
-//       required: true
-//     },
-//     disabled: {
-//       type: Boolean,
-//       default: false
-//     }
-//   },
-//   data() {
-//     return {
-//       isChecked: this.value
-//     };
-//   },
-//   watch: {
-//     value(newValue) {
-//       this.isChecked = newValue;
-//     }
-//   },
-//   methods: {
-//     handleChange() {
-//       if (!this.disabled){
-//         this.$emit("input", this.isChecked);
-//       }
-//     }
-//   }
-// };
 </script>
 
 <style scoped lang="scss" src="./MyCheckbox.scss">
