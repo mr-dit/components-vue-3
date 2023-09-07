@@ -1,51 +1,46 @@
-$border-color: #333;
-$disabled-color: #ccc;
-$disabled-text-color: #888;
-
 .checkbox {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 18px;
-  transition: transform 0.2s;
-  color: black;
-
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  &__checkmark {
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  & + label {
+    display: inline-flex;
     align-items: center;
-    width: 25px;
-    height: 26px;
-    margin-right: 5px;
-    vertical-align: middle;
-    text-align: center;
-    font-weight: bold;
-    color: #fff;
+    user-select: none;
+  }
+  & + label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 6px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+  &:checked + label::before {
+    border-color: var(--primary);
     background-color: var(--primary);
-
-
-    input[type="checkbox"]:disabled + & {
-      background-color: $disabled-color;
-      border-color: $disabled-color;
-      color: $disabled-text-color;
-    }
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
   }
-
-  &__label {
-    margin-left: 5px;
+  &:not(:disabled):not(:checked) + label:hover::before {
+    border-color: var(--primary-hover);
   }
-
-  input[type="checkbox"]:disabled + &,
-  &.--disable {
-    cursor: not-allowed;
-    color: $disabled-text-color;
+  &:not(:disabled):active + label::before {
+    background-color: var(--primary);
+    border: 1px solid #ECEBED;
   }
-
-  &:hover:not(.--disable) {
-    transform: translateY(-2px);
+  &:focus + label::before {
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.07);
+  }
+  &:focus:not(:checked) + label::before {
+    border-color: var(--primary);
+  }
+  &:disabled + label::before {
+    background-color: #e9ecef;
+    border: 1px solid #ECEBED;
   }
 }

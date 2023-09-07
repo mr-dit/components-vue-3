@@ -1,30 +1,46 @@
 <template>
     <div>
-        <input class="radiobutton" type="radio" :id="value" :value="value" v-model="selectedValue" @change="handleChange" />
+        <input class="radiobutton" 
+        type="radio" 
+        :id="value"
+        :name="name" 
+        :value="value" 
+        :checked="checked"
+        :disabled="disabled"
+        @change="handleChange($event)" />
         <label :for="value">{{ label }}</label>
     </div>
 </template>
   
 <script setup>
-import { ref } from 'vue';
 
 const props = defineProps({
+    name: {
+      type: String,
+      default: ''
+    },
     label: {
         type: String,
-        required: true,
+        default: '',
     },
     value: {
         type: String,
-        required: true,
+        default: '',
+    },
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
 });
 
-const selectedValue = ref(null);
+const emit = defineEmits(['update:checkedValue']);
 
-const emit = defineEmits(['input']);
-
-const handleChange = () => {
-    emit('input', selectedValue.value);
+const handleChange = (event) => {
+    emit('update:checkedValue', event.target.value);
 };
 </script>
   

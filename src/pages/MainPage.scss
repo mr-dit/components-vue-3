@@ -1,0 +1,11 @@
+.wrapper {
+    display: flex;
+    gap: 80px;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: start;
+    }
+}

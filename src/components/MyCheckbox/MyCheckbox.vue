@@ -1,40 +1,40 @@
 <template>
-  <label class="checkbox" :class="{ '--disable': disabled }">
     <input
+      class="checkbox"
       type="checkbox"
-      v-model="isChecked"
+      :id="value"
+      :checked="checked"
+			:value="value"
       :disabled="disabled"
-      @input="handleChange"
+      @input="handleChange($event)"
     />
-    <span class="checkbox__checkmark">{{ isChecked ? '✓' : '' }}</span>
-    <span class="checkbox__label">{{ label }}</span>
-  </label>
+    <label :for="value" :class="{ '--disable': disabled }">{{ label }}</label>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
 const props = defineProps({
   label: {
-    type: String,
-    required: true
-  },
-  value: {
-    type: Boolean,
-    required: false
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  }
+				type: String,
+				default: '',
+			},
+			value: {
+				type: String,
+				default: '',
+			},
+			disabled: {
+				type: Boolean,
+				default: false,
+			},
+			checked: {
+				type: Boolean,
+				default: false,
+			}
 });
 
-const isChecked = ref(props.value);
-
-const emit = defineEmits(['input']);
+const emit = defineEmits(['update:checked']);
 
 function handleChange(event) {
-    emit('input', event);
+    emit('update:checked', event.target.checked);
 };
 </script>
 
