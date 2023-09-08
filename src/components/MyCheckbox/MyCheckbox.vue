@@ -1,41 +1,63 @@
-<template>
-    <input
-      class="checkbox"
-      type="checkbox"
-      :id="value"
-      :checked="checked"
-			:value="value"
-      :disabled="disabled"
-      @input="handleChange($event)"
-    />
-    <label :for="value" :class="{ '--disable': disabled }">{{ label }}</label>
-</template>
-
 <script setup>
-const props = defineProps({
-  label: {
-				type: String,
-				default: '',
-			},
-			value: {
-				type: String,
-				default: '',
-			},
-			disabled: {
-				type: Boolean,
-				default: false,
-			},
-			checked: {
-				type: Boolean,
-				default: false,
-			}
-});
+  const emits = defineEmits(['update:checked', 'updateCheckboxGroup'])
+  const props = defineProps({
+    name: {
+      type: String,
+      default: ''
+    },
+    id: {
+      type: String,
+      default: ''
+    },
+    value: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    group: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      default: 'checkbox'
+    }
+  })
 
-const emit = defineEmits(['update:checked']);
-
-function handleChange(event) {
-    emit('update:checked', event.target.checked);
-};
+  const handleClick = (event) => {
+    if (props.group) {
+      emits('updateCheckboxGroup', {itemId: props.id, checked: event.target.checked})
+    } else {
+      emits('update:checked', event.target.checked)
+    }
+  }
 </script>
+
+<template>
+  <div :class="[{'switch-container': type === 'switch'}]">
+    <input
+      :class="[{'checkbox': type === 'checkbox'}, {'switch': type === 'switch'}]"
+      type="checkbox"
+      :name="name"
+      :id="id"
+      :value="value"
+      :checked="checked"
+      :disabled="disabled"
+      @input="handleClick($event)">
+    <label :for="id">{{label}}</label>
+    <label :for="id" class="switch__label" v-if="type === 'switch'">{{label}}</label>
+  </div>
+</template>
 
 <style scoped lang="scss" src="./MyCheckbox.scss"></style>
