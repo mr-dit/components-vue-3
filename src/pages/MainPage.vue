@@ -40,8 +40,11 @@
             <my-radio-button label="Option 2" name="rbtn" value="option2" v-model:checked-value="selectedOption" />
         </div>
         <div class="wrapper_item">
-            <my-checkbox-group v-model:value="selectedItemId" name="heroes" :items="checkboxItems"/>
-            {{ selectedItemId }}
+            <my-checkbox-group v-model:value="selectedCheckboxItem" name="heroes" :items="checkboxItems"/>
+            {{ selectedCheckboxItem }}
+        </div>
+        <div class="wrapper__item">
+            <my-radio-group v-model="selectedRadio" name="radioGroup" :items="radioItems"></my-radio-group>
         </div>
     </div>
 </template>
@@ -53,6 +56,7 @@ import MyCheckbox from '../components/MyCheckbox';
 import MyInput from '../components/MyInput';
 import MyRadioButton from "../components/MyRadioButton";
 import MyCheckboxGroup from '../components/MyCheckboxGroup';
+import MyRadioGroup from '../components/MyRadioGroup';
 
 
 const selectedOption = ref(null);
@@ -66,7 +70,15 @@ const checkboxActive = ref(true)
   { id: "2", name: "checkboxGroup2", value: "option2", },
   { id: "3", name: "checkboxGroup3", value: "option3", },
 ])
-  const selectedItemId = ref(['1', '3'])
+  const selectedCheckboxItem = ref(['1', '3'])
+
+
+  const selectedRadio = ref("option1");
+const radioItems = ref([
+  { id: "1", label: "Option 1", value: "groupOption1" },
+  { id: "2", label: "Option 2", value: "groupOption2" },
+  { id: "3", label: "Option 3", value: "groupOption3" },
+]);
 
 
 const handleButtonClick = () => {
