@@ -29,10 +29,6 @@
       type: Boolean,
       default: false
     },
-    type: {
-      type: String,
-      default: 'checkbox'
-    }
   })
 
   const handleClick = (event) => {
@@ -45,9 +41,9 @@
 </script>
 
 <template>
-  <div :class="[{'switch-container': type === 'switch'}]">
+  <div>
     <input
-      :class="[{'checkbox': type === 'checkbox'}, {'switch': type === 'switch'}]"
+      :class="[{'checkbox': type === 'checkbox'}]"
       type="checkbox"
       :name="name"
       :id="id"
@@ -56,7 +52,6 @@
       :disabled="disabled"
       @input="handleClick($event)">
     <label :for="id">{{label}}</label>
-    <label :for="id" class="switch__label" v-if="type === 'switch'">{{label}}</label>
   </div>
 </template>
 
