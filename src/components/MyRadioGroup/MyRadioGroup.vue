@@ -17,10 +17,23 @@
   import MyRadioButton from "../MyRadioButton";
   import { defineProps, defineEmits, ref } from "vue";
   
-  const { items, value, name } = defineProps(["items", "value", "name"]);
+  const props = defineProps({
+    value: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    items: {
+      type: Array,
+      required: true,
+    }
+  })
   const emit = defineEmits(["update:value"]);
   
-  const checkedValue = ref(value);
+  const checkedValue = ref(props.value);
   
   const updateCheckedValue = (value) => {
     checkedValue.value = value;

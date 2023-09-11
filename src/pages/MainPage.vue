@@ -14,20 +14,11 @@
 
         </div>
         <div class="wrapper__item">
-            <my-checkbox
-                label="Checkbox Active"
-                id="checkboxActive"
-                name="checkboxActive"
-                value="I like it"
-                v-model:checked="checkboxActive"/>
-                {{checkboxActive}}
-            <my-checkbox
-                label="Checkbox Disabled"
-                id="checkboxDisabled"
-                name="checkboxDisabled"
-                value="I like it"
-                :disabled="checkboxDisabled"
-                v-model:checked="checkboxDisabledChecked"/>
+            <my-checkbox label="Checkbox Active" id="checkboxActive" name="checkboxActive" value="I like it"
+                v-model:checked="checkboxActive" />
+            {{ checkboxActive }}
+            <my-checkbox label="Checkbox Disabled" id="checkboxDisabled" name="checkboxDisabled" value="I like it"
+                :disabled="checkboxDisabled" v-model:checked="checkboxDisabledChecked" />
         </div>
         <div class="wrapper__item">
             <my-input placeholder="Напишите что-то..." iconLeft="magnifying-glass" @input="handleInput"></my-input>
@@ -40,11 +31,12 @@
             <my-radio-button label="Option 2" name="rbtn" value="option2" v-model:checked-value="selectedOption" />
         </div>
         <div class="wrapper_item">
-            <my-checkbox-group v-model:value="selectedCheckboxItem" name="heroes" :items="checkboxItems"/>
+            <my-checkbox-group v-model:value="selectedCheckboxItem" name="heroes" :items="checkboxItems" />
             {{ selectedCheckboxItem }}
         </div>
         <div class="wrapper__item">
-            <my-radio-group v-model="selectedRadio" name="radioGroup" :items="radioItems"></my-radio-group>
+            <my-radio-group v-model:value="selectedRadio" name="radioGroup" :items="radioItems"></my-radio-group>
+            {{ selectedRadio }}
         </div>
     </div>
 </template>
@@ -62,22 +54,21 @@ import MyRadioGroup from '../components/MyRadioGroup';
 const selectedOption = ref(null);
 
 const checkboxActive = ref(true)
-  const checkboxDisabled = ref(true)
-  const checkboxDisabledChecked = ref(false)
-
-  const checkboxItems = ref([
-  { id: "1", name: "checkboxGroup1", value: "option1", },
-  { id: "2", name: "checkboxGroup2", value: "option2", },
-  { id: "3", name: "checkboxGroup3", value: "option3", },
+const checkboxDisabled = ref(true)
+const checkboxDisabledChecked = ref(false)
+const checkboxItems = ref([
+    { id: "1", name: "checkboxGroup1", value: "option1", },
+    { id: "2", name: "checkboxGroup2", value: "option2", },
+    { id: "3", name: "checkboxGroup3", value: "option3", },
 ])
-  const selectedCheckboxItem = ref(['1', '3'])
+const selectedCheckboxItem = ref(['1', '3'])
 
 
-  const selectedRadio = ref("option1");
+const selectedRadio = ref("groupOption1");
 const radioItems = ref([
-  { id: "1", label: "Option 1", value: "groupOption1" },
-  { id: "2", label: "Option 2", value: "groupOption2" },
-  { id: "3", label: "Option 3", value: "groupOption3" },
+    { id: "1", label: "Option 1", value: "groupOption1" },
+    { id: "2", label: "Option 2", value: "groupOption2" },
+    { id: "3", label: "Option 3", value: "groupOption3" },
 ]);
 
 
