@@ -1,5 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import Vue3ClickAway from 'vue3-click-away';
+
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -9,4 +11,4 @@ import { faAddressBook, faCreditCard, } from '@fortawesome/free-regular-svg-icon
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 library.add([ faAddressBook, faCreditCard, faMagnifyingGlass]);
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app');
+createApp(App).use(Vue3ClickAway).component('font-awesome-icon', FontAwesomeIcon).mount('#app');

@@ -43,7 +43,7 @@
 <template>
   <div>
     <input
-      :class="[{'checkbox': type === 'checkbox'}]"
+      :class="['checkbox']"
       type="checkbox"
       :name="name"
       :id="id"

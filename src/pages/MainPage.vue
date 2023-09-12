@@ -38,6 +38,11 @@
             <my-radio-group v-model:value="selectedRadio" name="radioGroup" :items="radioItems"></my-radio-group>
             {{ selectedRadio }}
         </div>
+        <div class="wrapper__item">
+            <my-select v-model="selectedOptions" :options="options" :multiple="true" label="Select an option" placeholder="Выберите..." />
+            {{ selectedOptions }}
+            <my-select v-model="selectedOptions" :options="options" :multiple="true" label="Select an option" placeholder="Выберите..." :disabled="true" />
+        </div>
     </div>
 </template>
 
@@ -49,6 +54,7 @@ import MyInput from '../components/MyInput';
 import MyRadioButton from "../components/MyRadioButton";
 import MyCheckboxGroup from '../components/MyCheckboxGroup';
 import MyRadioGroup from '../components/MyRadioGroup';
+import MySelect from "../components/MySelect"
 
 
 const selectedOption = ref(null);
@@ -71,9 +77,22 @@ const radioItems = ref([
     { id: "3", label: "Option 3", value: "groupOption3" },
 ]);
 
+const selectedOptions = ref([]);
+
+const options = ref([
+  { id: "1", name: "Option 1", selected: false },
+  { id: "2", name: "Option 2", selected: false },
+  { id: "3", name: "Option 3", selected: false },
+  { id: "4", name: "Option 4", selected: false },
+  { id: "5", name: "Option 5", selected: false },
+  { id: "6", name: "Option 6", selected: false },
+]);
+
+
 
 const handleButtonClick = () => {
     console.log('Button clicked');
+    console.log(selectedOptions.value)
 };
 
 const handleInput = (value) => {
