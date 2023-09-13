@@ -21,9 +21,12 @@
   }
 
   &__selected {
+    display: flex;
+    align-items: center;
     margin-top: 5px;
     font-size: 14px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 10px;
     min-height: 38px;
     &__placeholder {

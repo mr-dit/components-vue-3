@@ -80,7 +80,7 @@ const radioItems = ref([
 const selectedOptions = ref([]);
 
 const options = ref([
-  { id: "1", name: "Option 1", selected: false },
+  { id: "1", name: "Option 1", selected: true },
   { id: "2", name: "Option 2", selected: false },
   { id: "3", name: "Option 3", selected: false },
   { id: "4", name: "Option 4", selected: false },
@@ -88,7 +88,7 @@ const options = ref([
   { id: "6", name: "Option 6", selected: false },
 ]);
 
-
+console.log(selectedOptions.value)
 
 const handleButtonClick = () => {
     console.log('Button clicked');

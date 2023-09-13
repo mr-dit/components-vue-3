@@ -1,4 +1,3 @@
-
 <template>
     <div class="select" :class="{ open: isOpen, disabled: disabled }" v-click-away="clickOutsideHandler">
         <div class="select__label">{{ label }}</div>
@@ -12,20 +11,27 @@
             <span class="select__selected__icon">{{ isOpen ? '▲' : "▼" }}</span>
         </div>
         <div class="select__dropdown" v-if="isOpen">
-            <div class="select__dropdown__option" v-for="option in options" :key="option.id"
-                @click="toggleOption(option.id)">
-                <!-- <my-checkbox :id="'option-' + option.id" :name="option.name" :value="option.id" :label="option.name"
-                    :checked="selectedValues.includes(option.id)" @update:checked="toggleOption(option.id)"></my-checkbox> -->
-                <input type="checkbox" :id="'option-' + option.id" :value="option.id"
-                    :checked="option.selected" @change="handleOptionChange" />
-                <label :for="'option-' + option.id" @click="toggleOption(option.id)">{{ option.name }}</label>
+            <div 
+                class="select__dropdown__option" 
+                v-for="option in options" 
+                :key="option.id"
+                @click="toggleOption(option.id)"
+            >
+                <my-checkbox 
+                    :id="'option-' + option.id" 
+                    :name="option.name" 
+                    :value="option.id" 
+                    :label="option.name"   
+                    :checked="option.selected || selectedValues.includes(option.id)" 
+                    @update:checked="toggleOption(option.id)">
+                </my-checkbox>
             </div>
         </div>
     </div>
 </template>
   
 <script setup>
-import { ref, defineProps, defineEmits, computed } from "vue";
+import { ref, defineProps, defineEmits, computed, onMounted } from "vue";
 import MyCheckbox from "../MyCheckbox";
 
 
@@ -49,7 +55,7 @@ const toggleDropdown = () => {
 };
 
 const toggleOption = (optionId) => {
-    if (disabled) { return }
+    if (disabled) return
 
     if (multiple) {
         if (selectedValues.value.includes(optionId)) {
@@ -74,12 +80,19 @@ const selectedOptions = computed(() =>
     options.filter((option) => selectedValues.value.includes(option.id))
 );
 
-console.log(selectedValues.value)
 
 const clickOutsideHandler = () => {
     isOpen.value = false;
 };
 
+onMounted(() => {
+    options.forEach((option) => {
+        if (option.selected) {
+            selectedValues.value.push(option.id);
+        }
+    });
+    handleOptionChange();
+});
 </script>
   
   
