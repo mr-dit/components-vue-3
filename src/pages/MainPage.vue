@@ -39,9 +39,25 @@
             {{ selectedRadio }}
         </div>
         <div class="wrapper__item">
-            <my-select v-model="selectedOptions" :options="options" :multiple="true" label="Select an option" placeholder="Выберите..." />
+            <my-select v-model="selectedOptions" :options="options" :multiple="true" label="Select an option"
+                placeholder="Выберите..." />
             {{ selectedOptions }}
-            <my-select v-model="selectedOptions" :options="options" :multiple="true" label="Select an option" placeholder="Выберите..." :disabled="true" />
+            <my-select v-model="selectedOptions" :options="options" :multiple="true" label="Select an option"
+                placeholder="Выберите..." :disabled="true" />
+        </div>
+        <div class="wrapper__item">
+            <my-button @click="showModal"  type="primary">Открыть модальное окно</my-button>
+            <MyModal  v-if="isModalVisible"  @close="closeModal">
+                <template #title>
+                    Заголовок Модального окна
+                </template>
+                <template #text>
+                    <p>Это текст модального окна.</p>
+                </template>
+                <template #buttons>
+                    <my-button @click="handleCustomAction" type="secondary">Действие</my-button>
+                </template>
+            </MyModal>
         </div>
     </div>
 </template>
@@ -55,6 +71,7 @@ import MyRadioButton from "../components/MyRadioButton";
 import MyCheckboxGroup from '../components/MyCheckboxGroup';
 import MyRadioGroup from '../components/MyRadioGroup';
 import MySelect from "../components/MySelect"
+import MyModal from '../components/MyModal';
 
 
 const selectedOption = ref(null);
@@ -80,15 +97,36 @@ const radioItems = ref([
 const selectedOptions = ref([]);
 
 const options = ref([
-  { id: "1", name: "Option 1", selected: true },
-  { id: "2", name: "Option 2", selected: false },
-  { id: "3", name: "Option 3", selected: false },
-  { id: "4", name: "Option 4", selected: false },
-  { id: "5", name: "Option 5", selected: false },
-  { id: "6", name: "Option 6", selected: false },
+    { id: "1", name: "Option 1", selected: true },
+    { id: "2", name: "Option 2", selected: false },
+    { id: "3", name: "Option 3", selected: false },
+    { id: "4", name: "Option 4", selected: false },
+    { id: "5", name: "Option 5", selected: false },
+    { id: "6", name: "Option 6", selected: false },
 ]);
 
-console.log(selectedOptions.value)
+
+///////////////////////////////////////////////////////////////////////////////
+
+const isModalVisible = ref(false);
+
+const showModal = () => {
+    isModalVisible.value = true;
+};
+
+const closeModal = () => {
+    isModalVisible.value = false;
+};
+
+const handleCustomAction = () => {
+    closeModal()
+    console.log("Нажата кнопка модального окна");
+};
+
+
+
+// ////////////////////////////////////////////////////////////////
+
 
 const handleButtonClick = () => {
     console.log('Button clicked');
