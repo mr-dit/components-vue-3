@@ -46,8 +46,8 @@
                 placeholder="Выберите..." :disabled="true" />
         </div>
         <div class="wrapper__item">
-            <my-button @click="showModal"  type="primary">Открыть модальное окно</my-button>
-            <MyModal  v-if="isModalVisible"  @close="closeModal">
+            <my-button @click="showModal" type="primary">Открыть модальное окно</my-button>
+            <MyModal v-if="isModalVisible" @close="closeModal">
                 <template #title>
                     Заголовок Модального окна
                 </template>
@@ -55,7 +55,7 @@
                     <p>Это текст модального окна.</p>
                 </template>
                 <template #buttons>
-                    <my-button @click="handleCustomAction" type="secondary">Действие</my-button>
+                    <my-button @click="handleCustomAction" type="secondary">ОК</my-button>
                 </template>
             </MyModal>
         </div>

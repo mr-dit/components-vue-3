@@ -1,48 +1,46 @@
 <template>
     <teleport to="body">
-      <div class="modal-overlay" @click.stop="closeModal">
-      <div @click.stop class="modal">
-        <div class="modal-header">
-          <h2 class="modal-title"><slot name="title">{{ title }}</slot></h2>
-          <button class="modal-close" @click="closeModal">X</button>
+        <div class="overlay" @click.stop="closeModal">
+            <div @click.stop class="overlay__modal">
+                <div class="overlay__modal__header">
+                    <h2 class="overlay__modal__header__title">
+                        <slot name="title">{{ title }}</slot>
+                    </h2>
+                    <button class="overlay__modal__header__close" @click="closeModal">X</button>
+                </div>
+                <div class="overlay__modal__body">
+                    <slot name="text">{{ text }}</slot>
+                </div>
+                <div class="overlay__modal__footer">
+                    <slot name="buttons">
+                        <button v-for="button in buttons" :key="button.id" @click="() => handleButtonClick(button)"
+                            class="overlay__modal__footer__button">
+                            {{ button.name }}
+                        </button>
+                    </slot>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <slot name="text">{{ text }}</slot>
-        </div>
-        <div class="modal-footer">
-          <slot name="buttons">
-            <button
-              v-for="button in buttons"
-              :key="button.id"
-              @click="() => handleButtonClick(button)"
-              class="modal-button"
-            >
-              {{ button.name }}
-            </button>
-          </slot>
-        </div>
-      </div>
-    </div>
     </teleport>
-  </template>
+</template>
   
-  <script setup>
-  import { ref, defineProps, defineEmits } from "vue";
-  
-  const { buttons, text, title } = defineProps(["buttons", "text", "title"]);
-  const emit = defineEmits(["close"]);
-  
-  const closeModal = () => {
+<script setup>
+import { defineProps, defineEmits } from "vue";
+
+const { buttons, text, title } = defineProps(["buttons", "text", "title"]);
+const emit = defineEmits(["close"]);
+
+const closeModal = () => {
     emit("close");
-  };
-  
-  const handleButtonClick = (button) => {
+};
+
+const handleButtonClick = (button) => {
     if (button.onClick) {
-      button.onClick();
+        button.onClick();
     }
     closeModal();
-  };
-  </script>
+};
+</script>
   
 <style scoped src="./MyModal.scss"></style>
   

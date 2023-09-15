@@ -11,7 +11,7 @@
 const props = defineProps({
   disabled: {
     type: Boolean,
-    required: true
+    default: false
   },
   title: {
     type: String,
