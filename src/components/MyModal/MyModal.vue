@@ -27,7 +27,21 @@
 <script setup>
 import { defineProps, defineEmits } from "vue";
 
-const { buttons, text, title } = defineProps(["buttons", "text", "title"]);
+
+const props = defineProps({
+    buttons: {
+        type: Array,
+        required: false
+    },
+    text: {
+        type: String,
+        required: false
+    },
+    title: {
+        type: String,
+        required: false
+    }
+})
 const emit = defineEmits(["close"]);
 
 const closeModal = () => {

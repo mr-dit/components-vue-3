@@ -46,8 +46,8 @@
                 placeholder="Выберите..." :disabled="true" />
         </div>
         <div class="wrapper__item">
-            <my-button @click="showModal" type="primary">Открыть модальное окно</my-button>
-            <MyModal v-if="isModalVisible" @close="closeModal">
+            <my-button @click="showModal" type="primary" borderRadius="10px">Открыть модальное окно</my-button>
+            <my-modal v-if="isModalVisible" @close="closeModal">
                 <template #title>
                     Заголовок Модального окна
                 </template>
@@ -57,7 +57,13 @@
                 <template #buttons>
                     <my-button @click="handleCustomAction" type="secondary">ОК</my-button>
                 </template>
-            </MyModal>
+            </my-modal>
+        </div>
+        <div class="wrapper__item">
+            <my-tab title="tab1Title">Tab 1</my-tab>
+        </div>
+        <div class="wrapper__item">
+
         </div>
     </div>
 </template>
@@ -72,6 +78,7 @@ import MyCheckboxGroup from '../components/MyCheckboxGroup';
 import MyRadioGroup from '../components/MyRadioGroup';
 import MySelect from "../components/MySelect"
 import MyModal from '../components/MyModal';
+import MyTab from '../components/MyTab';
 
 
 const selectedOption = ref(null);
@@ -126,6 +133,7 @@ const handleCustomAction = () => {
 
 
 // ////////////////////////////////////////////////////////////////
+
 
 
 const handleButtonClick = () => {
