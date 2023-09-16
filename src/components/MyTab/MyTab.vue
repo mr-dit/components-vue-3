@@ -1,10 +1,10 @@
 <template>
     <div class="tab">
-        <div class="tab-nav">
-            <span :class="['tab-nav__item', { 'selected': selectedTab }]" @click="clickOnTab">{{ title }}
+        <div class="tab__nav">
+            <span :class="['tab__nav__item', { 'selected': selectedTab }]" @click="clickOnTab">{{ title }}
             </span>
         </div>
-        <div class="tab-content">
+        <div class="tab__content">
             <slot />
         </div>
     </div>

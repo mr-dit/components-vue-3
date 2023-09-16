@@ -63,6 +63,11 @@
             <my-tab title="tab1Title">Tab 1</my-tab>
         </div>
         <div class="wrapper__item">
+            <my-tabs :items="tabItems" v-model="selectedTab">
+                <p v-if="selectedTab === 'tab1'">Содержимое первой вкладки</p>
+                <my-button v-if="selectedTab === 'tab2'" type="secondary">Содержимое второй вкладки</my-button>
+                <p v-if="selectedTab === 'tab3'">Содержимое третьей вкладки</p>
+            </my-tabs>
 
         </div>
     </div>
@@ -79,6 +84,7 @@ import MyRadioGroup from '../components/MyRadioGroup';
 import MySelect from "../components/MySelect"
 import MyModal from '../components/MyModal';
 import MyTab from '../components/MyTab';
+import MyTabs from '../components/MyTabs';
 
 
 const selectedOption = ref(null);
@@ -133,6 +139,13 @@ const handleCustomAction = () => {
 
 
 // ////////////////////////////////////////////////////////////////
+
+const tabItems = [
+    { id: "tab1", title: "Вкладка 1" },
+    { id: "tab2", title: "Вкладка 2" },
+    { id: "tab3", title: "Вкладка 3" },
+]
+const selectedTab = ref("tab1")
 
 
 
