@@ -27,8 +27,8 @@
             <my-input placeholder="Напишите что-то..." :value="124214124"></my-input>
         </div>
         <div class="wrapper__item">
-            <my-radio-button label="Option 1" name="rbtn" value="option1" v-model:checked-value="selectedOption" />
-            <my-radio-button label="Option 2" name="rbtn" value="option2" v-model:checked-value="selectedOption" />
+            <my-radio-button label="Option 1" name="rbtn" value="option1" v-model:checked-value="selectedOptionRadio" />
+            <my-radio-button label="Option 2" name="rbtn" value="option2" v-model:checked-value="selectedOptionRadio" />
         </div>
         <div class="wrapper_item">
             <my-checkbox-group v-model:value="selectedCheckboxItem" name="heroes" :items="checkboxItems" />
@@ -68,7 +68,9 @@
                 <my-button v-if="selectedTab === 'tab2'" type="secondary">Содержимое второй вкладки</my-button>
                 <p v-if="selectedTab === 'tab3'">Содержимое третьей вкладки</p>
             </my-tabs>
-
+        </div>
+        <div class="wrapper__item">
+            <my-table :cols="tableCols" :rows="tableRows" title="Пользователи" @cellClick="handleCellClick" />
         </div>
     </div>
 </template>
@@ -85,10 +87,10 @@ import MySelect from "../components/MySelect"
 import MyModal from '../components/MyModal';
 import MyTab from '../components/MyTab';
 import MyTabs from '../components/MyTabs';
+import MyTable from '../components/MyTable';
 
 
-const selectedOption = ref(null);
-
+// Checkbox
 const checkboxActive = ref(true)
 const checkboxDisabled = ref(true)
 const checkboxDisabledChecked = ref(false)
@@ -99,6 +101,8 @@ const checkboxItems = ref([
 ])
 const selectedCheckboxItem = ref(['1', '3'])
 
+// RadioButton
+const selectedOptionRadio = ref(null);
 
 const selectedRadio = ref("groupOption1");
 const radioItems = ref([
@@ -107,6 +111,7 @@ const radioItems = ref([
     { id: "3", label: "Option 3", value: "groupOption3" },
 ]);
 
+//Select
 const selectedOptions = ref([]);
 
 const options = ref([
@@ -119,7 +124,7 @@ const options = ref([
 ]);
 
 
-///////////////////////////////////////////////////////////////////////////////
+// Modal
 
 const isModalVisible = ref(false);
 
@@ -137,9 +142,7 @@ const handleCustomAction = () => {
 };
 
 
-
-// ////////////////////////////////////////////////////////////////
-
+// Tab
 const tabItems = [
     { id: "tab1", title: "Вкладка 1" },
     { id: "tab2", title: "Вкладка 2" },
@@ -147,13 +150,27 @@ const tabItems = [
 ]
 const selectedTab = ref("tab1")
 
+// Table
+const tableCols = ["id", "Имя", "Возраст", "Город"]
+
+const tableRows = [
+    { id: 1, Имя: "Алиса", Возраст: 25, Город: "Нью-Йорк" },
+    { id: 2, Имя: "Боб", Возраст: 30, Город: "Лос-Анджелес" },
+    { id: 3, Имя: "Кэрол", Возраст: 28, Город: "Чикаго" },
+]
+
+const handleCellClick = (value) => {
+    console.log("Клик на ячейку:", value);
+}
 
 
+//Button
 const handleButtonClick = () => {
     console.log('Button clicked');
     console.log(selectedOptions.value)
 };
 
+//Input
 const handleInput = (value) => {
     console.log(value)
 };
