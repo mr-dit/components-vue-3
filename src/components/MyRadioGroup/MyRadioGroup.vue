@@ -15,7 +15,7 @@
   
   <script setup>
   import MyRadioButton from "../MyRadioButton";
-  import { defineProps, defineEmits, ref } from "vue";
+  import { ref } from "vue";
   
   const props = defineProps({
     value: {

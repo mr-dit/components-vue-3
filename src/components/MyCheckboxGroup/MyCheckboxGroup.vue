@@ -1,3 +1,17 @@
+<template>
+  <div v-for="item in items" :key="item.id">
+    <my-checkbox
+      :label="item.name"
+      :id="item.id"
+      :name="name"
+      :value="item.value"
+      :checked="value.includes(item.id)"
+      group
+      @updateCheckboxGroup="check"
+    />
+  </div>
+</template>
+
 <script setup>
   import MyCheckbox from '../MyCheckbox';
 
@@ -32,17 +46,3 @@
     emit('update:value', updateValue)
   }
 </script>
-
-<template>
-  <div v-for="item in items" :key="item.id">
-    <my-checkbox
-      :label="item.name"
-      :id="item.id"
-      :name="name"
-      :value="item.value"
-      :checked="value.includes(item.id)"
-      group
-      @updateCheckboxGroup="check"
-    />
-  </div>
-</template>

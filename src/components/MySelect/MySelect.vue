@@ -31,7 +31,7 @@
 </template>
   
 <script setup>
-import { ref, defineProps, defineEmits, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import MyCheckbox from "../MyCheckbox";
 
 

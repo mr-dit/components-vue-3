@@ -10,7 +10,6 @@
 </template>
   
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
 import MyTab from "../MyTab";
 
 const props = defineProps({
@@ -31,6 +30,5 @@ const handleTabClick = (itemId) => {
 };
 </script>
   
-<style lang="scss" scoped src="./MyTabs.scss">
-</style>
+<style lang="scss" scoped src="./MyTabs.scss"></style>
   
